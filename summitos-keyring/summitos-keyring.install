@@ -1,10 +1,9 @@
 post_upgrade() {
-	if usr/bin/pacman-key -l >/dev/null 2>&1; then
-		usr/bin/pacman-key --populate summitos
-	else
-		echo " >>> Run \`pacman-key --init\` to set up your pacman keyring."
-		echo " >>> Then run \`pacman-key --populate summitos\` to install the SummitOS keyring."
-	fi
+	pacman-key --init
+	pacman-key --add /usr/share/pacman/keyrings/summitos.gpg
+	pacman-key --lsign-key E36773978BC507D81111DD0506A51E45C6C5D295
+	pacman-key --lsign-key 5B034442A035DB82CA70AB0D3D4734AADD67843B
+	pacman-key --populate
 }
 
 post_install() {

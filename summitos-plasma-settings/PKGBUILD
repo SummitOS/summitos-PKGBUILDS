@@ -1,0 +1,21 @@
+pkgname=summitos-plasma-settings
+_pkgname=summitos-plasma-settings
+_destname1="/etc/skel/.config/"
+pkgver=24.03
+pkgrel=1
+pkgdesc="summitos plasma settings"
+arch=('any')
+url="https://github.com/summitos/summitos-plasma-settings"
+license=('GPL3')
+makedepends=('git')
+conflicts=()
+depends=()
+provides=("${pkgname}")
+options=(!strip !emptydirs)
+source=(${_pkgname}::"git+https://github.com/summitos/${_pkgname}.git")
+sha256sums=('SKIP')
+#backup=(etc/pacman.d/summitos-plasma-settings)
+package() {
+	install -dm755 ${pkgdir}${_destname1}
+	install -m644  ${srcdir}/${_pkgname}${_destname1}* ${pkgdir}${_destname1}
+}

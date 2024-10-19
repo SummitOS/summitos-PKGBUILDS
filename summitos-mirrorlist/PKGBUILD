@@ -1,0 +1,21 @@
+pkgname=summitos-mirrorlist
+_pkgname=summitos-mirrorlist
+_destname1="/etc/pacman.d/"
+pkgver=24.03
+pkgrel=12
+pkgdesc="summitos mirrorlist"
+arch=('any')
+url="https://github.com/summitos/summitos-mirrorlist"
+license=('GPL3')
+makedepends=('git')
+conflicts=()
+depends=()
+provides=("${pkgname}")
+options=(!strip !emptydirs)
+source=(${_pkgname}::"git+https://github.com/summitos/${_pkgname}.git")
+sha256sums=('SKIP')
+#backup=(etc/pacman.d/summitos-mirrorlist)
+package() {
+	install -dm755 ${pkgdir}${_destname1}
+	install -m644  ${srcdir}/${_pkgname}${_destname1}* ${pkgdir}${_destname1}
+}

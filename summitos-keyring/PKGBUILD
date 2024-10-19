@@ -1,9 +1,9 @@
 pkgname=summitos-keyring
 pkgver=2024
-pkgrel=2
+pkgrel=3
 pkgdesc='SummitOS keyring'
 arch=('any')
-url='https://summitos.com/'
+url='https://summitos.github.io/'
 license=('GPL3')
 install="${pkgname}.install"
 source=('https://raw.githubusercontent.com/summitos/summitos-keyring/main/Makefile'

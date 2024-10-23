@@ -1,0 +1,43 @@
+# Maintainer: Vladislav Nepogodin <nepogodin.vlad@gmail.com>
+# Maintainer: ptr1337 <admin@ptr1337.dev>
+
+pkgname=summitos-fish-config
+_pkgname=summitos-fish-config
+pkgver=15
+pkgrel=1
+pkgdesc="Fish configuration of SummitOS"
+arch=('any')
+url="https://github.com/SummitOS/$pkgname"
+license=('MIT')
+depends=(
+  bat
+  expac
+  eza
+  fastfetch
+  fish
+  fish-autopair
+  fish-pure-prompt
+  fisher
+  fzf
+  pkgfile
+  tealdeer
+  ttf-fantasque-nerd
+)
+makedepends=(
+  git
+)
+conflicts=('kwin-scripts-window-colors')
+source=(${_pkgname}::"git+https://github.com/summitos/${_pkgname}.git"
+        "$pkgname.install")
+sha256sums=('SKIP'
+            'SKIP')
+
+package() {
+  cd "$srcdir/$pkgname"
+
+  install -D -m644 conf.d/done.fish $pkgdir/usr/share/summitos-fish-config/conf.d/done.fish
+  install -D -m644 summitos-config.fish $pkgdir/usr/share/summitos-fish-config/summitos-config.fish
+  install -D -m644 config.fish $pkgdir/etc/skel/.config/fish/config.fish
+}
+
+# vim:set sw=2 sts=2 et:

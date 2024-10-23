@@ -1,9 +1,9 @@
 pkgname=summitos-wallpapers
 _pkgname=summitos-wallpapers
-_destname1="/usr/share/wallpapers/summitos/"
+_destname1="/usr"
 pkgver=24.03
-pkgrel=1
-pkgdesc="summitos plasma settings"
+pkgrel=2
+pkgdesc="summitos wallpapers"
 arch=('any')
 url="https://github.com/summitos/summitos-wallpapers"
 license=('GPL3')
@@ -17,5 +17,5 @@ sha256sums=('SKIP')
 #backup=(etc/pacman.d/summitos-wallpapers)
 package() {
 	install -dm755 ${pkgdir}${_destname1}
-	install -m644  ${srcdir}/${_pkgname}${_destname1}* ${pkgdir}${_destname1}
+	cp -r ${srcdir}/${pkgname}${_destname1}/* ${pkgdir}${_destname1}
 }
